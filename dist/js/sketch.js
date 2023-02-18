@@ -2,8 +2,6 @@ import * as THREE from "three";
 import vertex from "../js/shaders/vertex.glsl";
 import fragment from "../js/shaders/fragment.glsl";
 
-import { TimelineMax } from "gsap";
-
 export default class Sketch {
   constructor(options) {
     this.scene = new THREE.Scene();
@@ -66,7 +64,11 @@ export default class Sketch {
       console.log("Hello from handleImages!");
       let geo = new THREE.PlaneBufferGeometry(1.0, 0.8, 20, 20);
       let mesh = new THREE.Mesh(geo, mat);
-  
+     
+      mesh.addEventListener('click', (event) => {
+        console.log('Mesh clicked!');
+      });
+      
       group.add(mesh);
       this.groups.push(group);
       this.scene.add(group);
@@ -156,5 +158,4 @@ export default class Sketch {
     this.renderer.render(this.scene, this.camera);
     requestAnimationFrame(this.render.bind(this));
   }
-
 }

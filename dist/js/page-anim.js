@@ -23,7 +23,7 @@ var app = (function(){
 
         document.addEventListener('click', windowHanlder);
     });
-    function windowHanlder() {
+    function windowHanlder(e) {
 
         // let detail_scene =  document.getElementById("detail-scene");
         // detail_scene.style.opacity = '1';
@@ -73,10 +73,14 @@ var app = (function(){
     function detailButtonAni(){
 
         const myImage = document.getElementById("selected_image");
+        const myback = document.querySelector('#detail-scene');
+
         myImage.src = sessionStorage.getItem('image_path');
-    
+        myback.style.background = sessionStorage.getItem('back_color');
+
+
         var tl_detail = gsap.timeline({});
-        console.log('gsap', gsap);
+        // console.log('gsap', gsap);
 
         // gsap.to("#flash-image", {x: 100, duration: 1.0});
 

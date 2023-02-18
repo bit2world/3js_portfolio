@@ -34,7 +34,8 @@ var loadingAnimation = (function(){
       element.style.background = "black";
   
       tl_loading.to("#id-left-part", {display: 'none', duration: 0.0});
-  
+      tl_loading.to("#list_nav", {x: 100, duration: 0.1});
+      
       tl_loading.to("#first_back", {y: 1000, duration: 0.0});
       tl_loading.to("#first_back", {y: 0, duration: 0.3});
   
@@ -48,11 +49,11 @@ var loadingAnimation = (function(){
       tl_loading.to(rots, {duration: 0.0, x: 0.0, y: -0.0,z: -0.0,});
       tl_loading.to(trans, {y: 10, duration: 0.0});  
       tl_loading.to(trans, {y: 0, duration: 3.0});
-      tl_loading.to(rots, {duration: 0.3, x: 0.1, y: -0.2,z: -0.1,});
+      tl_loading.to(rots, {duration: 0.5, x: -0.5, y: -0.3, z: -0.2,});
   
       tl_loading.to("body", {background: 'rgb(194, 55, 90)', duration: 0.0});
   
-      tl_loading.to("#list_nav", {x: 100, duration: 0.1});
+     
       
       tl_loading.to("#id-left-part", {display: 'block', duration: 0.0});
       tl_loading.to("#id-left-part", {y: 1000, duration: 0.1});

@@ -59,18 +59,18 @@
 			box-sizing: border-box;
 
 		}
-		ul span {
+		/* ul span {
 			display: none;
-		}
+		} */
 		ul:hover {
-			width: 200px;
+			width: 150px;
 			color: white;
 		}
-		ul:hover span {
+		/* ul:hover span {
 			display: inline-block;
-		}
+		} */
 		ul:hover li {
-			width: 200px;
+			width: 150px;
 			/* background-color: gray; */
 			color : white;
 		}
@@ -78,16 +78,16 @@
 			display: block;
 			box-sizing: border-box;
 			width : 20px;
-			height: 30px;
+			height: 16px;
 			/* background : paleturquoise; */
-			border-radius: 5px;
+			border-radius: 3px;
 			margin : 20px 0px 20px 0px;
-			font-size: 20px;
-			border: 0px solid #000;
+			font-size: 16px;
+			line-height: 16px;
 			text-align: right;
 			overflow: hidden;
 			padding-right: 10px;
-			border-right: 10px solid yellow;
+			border-right: 8px solid #d1d1d1;
 			color : transparent;
 			/* border-left: 10px solid yellow; */
 
@@ -102,16 +102,26 @@
 		/* li > span {
 			display: none;
 		} */
-		li:hover {
+		ul:hover li:hover {
 			/* background: gray; */
-			width: 200px;
+			/* width: 200px; */
 			color : rgb(128, 156, 27);
 			/* margin-right : 20px; */
 		}
 		/* li:hover > span {
 			display: block;
 		} */
-		
+		.right_span {
+			display: inline-block;
+			width : 80px;
+			height: 16px;
+			border-radius: 4px;
+			/* color: white; */
+			background: white;
+			padding : 0px 10px;
+
+		}
+
 		.container-detail {
 			width: 100%;
 			min-height: 100vh;
@@ -119,7 +129,7 @@
 			background-color: #FFF194;
 		}
 		div.menu-top-main {
-          margin : 30px 0px;
+          margin : 0px 0px;
           display: flex;
           justify-content: space-between;
         }
@@ -128,38 +138,49 @@
           font-family: Arial, Helvetica, sans-serif;
 		  font-size: 14px;
           color : white;
-          font-weight: 600;
+          /* font-weight: 600; */
 		  /* margin-left: 45px; */
         }
 		.main-part {
-			padding : 30px;
+			padding : 0px 60px;
 			color : white;
 		}
 		.main-part h1{
 			color: white;
 			font-family: 'Times New Roman, Times, serif';
-			font-size: 114px;
+			font-size: 130px;
 			font-weight: 600;
 			margin-top : 50px;
-			letter-spacing: -15px;
+			letter-spacing: -10px;
+			line-height: 150px;
 		}
 		.main-part p{
-			padding: 30px;
-			width: 750px;
+			padding: 15px;
+			width: 600px;
+			font-size: 20px;
 		}
 		.main-part a{
-			padding: 30px;
+			padding: 30px 15px;
 			text-decoration: none;
 			color: white;
+			font-size: 14px;
+			font-weight: 600;
+		}
+		.main-part a.button {
+			padding: 30px 15px;
+			text-decoration: none;
+			color: white;
+			font-size: 20px;
+			font-weight: 600;
 		}
 		.video-link {
 			/* display: none; */
-			width: 220px;
+			width: 210px;
 			height: 180px;
 			border : 5px solid white;
 			border-radius: 5px;
-			margin : 50px 50px;
-			/* padding: 10px; */
+			margin : 100px 0px;
+			padding: 0px;
 			cursor: pointer;
 		}
 		.loader_first {
@@ -209,13 +230,14 @@
           text-align: center;
           line-height: 50px;
           text-decoration: none;
-          margin : 50px auto;
+          margin : 65% auto;
         }
         div.name-text {
+		  position: fixed;
           margin: 30px;
           font-family: 'Times New Roman', Times, serif;
-          font-size: 150px;
-          padding : 180px 50px;
+          font-size: 130px;
+          padding : 150px 50px;
 		  z-index: 30;
         }
 		#flash-container {
@@ -259,7 +281,7 @@
 			/* right : 0; */
 			top : 0;
 			/* z-index: 301; */
-			padding: 30px;
+			padding: 15px 30px;
 			/* background: black; */
 			/* background : #0F1632; */
 
@@ -278,7 +300,7 @@
 		}
 		#first_back p {
 			font-family: 'Times New Roman', Times, serif;
-			font-size: 48px;
+			font-size: 36px;
 			font-weight: 600;
 			color : white;
 			padding-left : 0px;
@@ -301,15 +323,15 @@
 	<div id="id-left-part" class="main-part loader1">
 		
 		<div class="menu-top-main">
-			<a id="go2home" href="#">ROBIN LOGUIER</a>
+			<a id="go2home" href="#">ROBIN NOGUIER</a>
 			<a href="#" >ABOUT</a>
 		</div>
-		<h1 class="loader_element">BUBBLEHOUSE</h1>
+		<h1 class="loader_element">Bublehouse</h1>
 		<p>
 			Bubblehouse aspires to be the best platform for creators
 			 to share their NFTs with the world.
 		</p>
-		<a href="#">OPEN CASE STUDY</a>
+		<a class="button" href="#">OPEN CASE STUDY</a>
 		<div id="video-link" class="video-link">
 			<video width="200" height="160"  autoplay>
 				<source src="./videos/video - 2.mp4" type="video/mp4">
@@ -328,7 +350,7 @@
 			<img class="img-hover" id="selected_image" src="img/image-2.jpg" class="img" alt="">
 		</div>
 		<div class="name-text">Ueno</div>
-		<a class="down" href="#">Down</a>
+		<a class="down" href="#">D</a>
 	</div>
 	<div id="flash-container">
 		<div id="flash-image"></div>
@@ -357,26 +379,28 @@
 		</section>
 
 		<ul id="list_nav" class="nav">
-			<li data-nav="0" data-role="link" src="img/image-0.jpg">FUN
+			<li data-nav="0" data-role="link" src="img/image-0.jpg" data-clr="#f31e56">FUN
+				<!-- <span class="right_span"></span> -->
 				<!-- <img  src="img/image-0.jpg" width="0"> -->
 			</li>
-			<li data-nav="1" data-role="link" src="img/image-1.jpg">ESPANOTO
+			<li data-nav="1" data-role="link" src="img/image-1.jpg" data-clr="#d56ac9">ESPANOTO
 				<!-- <img  src="img/image-1.jpg" width="0"> -->
 			</li>
-			<li data-nav="2" data-role="link" src="img/image-2.jpg">BUBBLEHOUSE
+			<li data-nav="2" data-role="link" src="img/image-2.jpg" data-clr="#744e85">BUBBLEHOUSE
 				<!-- <img  src="img/image-2.jpg" width="0"> -->
 			</li>
-			<li data-nav="3" data-role="link" src="img/image-3.jpg">UENO
+			<li data-nav="3" data-role="link" src="img/image-3.jpg" data-clr="#54d3b6">UENO
 				<!-- <img  src="img/image-3.jpg" width="0"> -->
 			</li>
-			<li data-nav="4" data-role="link" src="img/image-4.jpg">GOOGLE
+			<li data-nav="4" data-role="link" src="img/image-4.jpg" data-clr="#1b720f">GOOGLE
 				<!-- <img  src="img/image-4.jpg" width="0"> -->
 			</li>
-			<li data-nav="5" data-role="link" src="img/image-5.jpg">IV-SKAYA
+			<li data-nav="5" data-role="link" src="img/image-5.jpg" data-clr="#0d1f9c">IV-SKAYA
 				<!-- <img  src="img/image-4.jpg" width="0"> -->
 			</li>
-			<li data-nav="6" data-role="link" src="img/image-6.jpg">EAGLE FILM
+			<li data-nav="6" data-role="link" src="img/image-6.jpg" data-clr="#7e93ac">EAGLE FILM
 				<!-- <img  src="img/image-4.jpg" width="0"> -->
+				<!-- <span class="right_span"></span> -->
 			</li>
 		</ul>
 		<div id="wrap">
