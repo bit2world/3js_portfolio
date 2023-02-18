@@ -45,13 +45,12 @@ export default class Sketch {
 
     console.log('Dom Element', this.renderer.domElement);
     
-    this.eventHandler();
   }
 
 
   handleImages() {
     let images = [...document.querySelectorAll(".img-slider")];
-    
+    console.log(images);
     images.forEach((im, i) => {
       let mat = this.material.clone();
       this.materials.push(mat);
@@ -63,21 +62,11 @@ export default class Sketch {
       mat.uniforms.texture1.value.needsUpdate = true;
 
       // mat.wireframe = true;
-      console.log(images);
+     
       console.log("Hello from handleImages!");
       let geo = new THREE.PlaneBufferGeometry(1.0, 0.8, 20, 20);
       let mesh = new THREE.Mesh(geo, mat);
-
-     
-      // mesh.on('mouseover', function() {
-      //   // do something when the mouse is over the mesh
-      //   alert('hi');
-      // });
-      mesh.addEventListener("mousedown", (e)=>{
-        alert('hi');
-        console.log('mesh clicked');
-      }, false);
-
+  
       group.add(mesh);
       this.groups.push(group);
       this.scene.add(group);
@@ -89,16 +78,6 @@ export default class Sketch {
       group.rotation.z = -0.1;
 
     });
-  }
-  eventHandler(){
-    // Assume we have a scene, camera, renderer and a mesh created.
-
-    // Add an event listener for mousemove on the renderer's DOM element
-    this.renderer.domElement.addEventListener('mousemove', this.onMouseMove);
-
-    // Define the onMouseMove function
-    
-
   }
   resize() {
     this.width = this.container.offsetWidth;
@@ -151,10 +130,6 @@ export default class Sketch {
       vertexShader: vertex,
       fragmentShader: fragment,
     });
-
-    // this.geometry = new THREE.PlaneGeometry(1, 1, 1, 1);
-    // this.plane = new THREE.Mesh(this.geometry, this.material);
-    // this.scene.add(this.plane);
   }
 
   stop() {

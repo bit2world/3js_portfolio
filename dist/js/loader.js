@@ -1,25 +1,88 @@
-//WITH Timeline1lines (cleaner, more versatile)
-console.log('loader animation');
-var timeline1 = gsap.timeline({repeat: 0, repeatDelay: 0});//repeat: 1, repeatDelay: 0
+var loadingAnimation = (function(){
+    let pages = [];
+    let links = [];
+    let timer = null;
 
-// timeline1.pause();
+    let sketch = window.sketch;
 
-// timeline1.to("#list_nav", {x: 100, duration: 0.1});
-
-// timeline1.to("#first_back", {y: 1000, duration: 0.1});
-// timeline1.to("#first_back", {y: 0, duration: 0.5});
-
-// timeline1.to("#video-link", {x: -500, duration: 0.1});
-// timeline1.to("#video-link", {x: 0, duration: 0.5});
-
-// timeline1.to("#video-link", {x: -100, duration: 0.0});
-// timeline1.to("#video-link", {x: 0, duration: 0.5});
-
-
-
-//timeline1.to("#list_nav", {x: 0, duration: 0.3});
-// timeline1.to("#first_back", {opacity: 0, duration: 1.0});
-// timeline1.to("#first_back", {display: 'none', duration: 0.0});
-
-// timeline1.play(0);
-
+    let rots = sketch.groups.map((e) => e.rotation);
+    console.log('trans', sketch.groups.map((e) => e.position));
+    let trans = sketch.groups.map((e) => e.position);
+  
+    document.addEventListener("DOMContentLoaded", function(){
+      pages = document.querySelectorAll('[data-page]');
+      links = document.querySelectorAll('[data-role="link"]');
+      
+      console.log('landing page');
+      // landing();
+      // var tl_loading = gsap.timeline({});
+      let tl_loading = gsap.timeline({repeat: 0, repeatDelay: 0});//repeat: 1, repeatDelay: 0
+      
+      tl_loading.pause();
+  
+      gsap.to(rots, {
+        duration: 0.1,
+        x: -0.5,
+        y: 0,
+        z: 0,
+      });
+  
+     
+      position = 5.1;
+  
+      const element = document.querySelector('body');
+      element.style.background = "black";
+  
+      tl_loading.to("#id-left-part", {display: 'none', duration: 0.0});
+  
+      tl_loading.to("#first_back", {y: 1000, duration: 0.0});
+      tl_loading.to("#first_back", {y: 0, duration: 0.3});
+  
+      let tween = gsap.fromTo("#first_back", {y: 0}, {y: 100, duration: 3, ease: "elastic"});
+      //now we can control it!
+      tween.pause();
+      tween.seek(2);
+      tween.progress(0.5);
+      tween.play();
+  
+      tl_loading.to(rots, {duration: 0.0, x: 0.0, y: -0.0,z: -0.0,});
+      tl_loading.to(trans, {y: 10, duration: 0.0});  
+      tl_loading.to(trans, {y: 0, duration: 3.0});
+      tl_loading.to(rots, {duration: 0.3, x: 0.1, y: -0.2,z: -0.1,});
+  
+      tl_loading.to("body", {background: 'rgb(194, 55, 90)', duration: 0.0});
+  
+      tl_loading.to("#list_nav", {x: 100, duration: 0.1});
+      
+      tl_loading.to("#id-left-part", {display: 'block', duration: 0.0});
+      tl_loading.to("#id-left-part", {y: 1000, duration: 0.1});
+      tl_loading.to("#id-left-part", {y: 0, duration: 0.5});
+  
+      tl_loading.to("#first_back", {y: -1000, duration: 0.1});
+      // tl_loading.to("#video-link", {x: -500, duration: 0.1});
+      // tl_loading.to("#video-link", {x: 0, duration: 0.5});
+  
+      tl_loading.to("#video-link", {x: -100, duration: 0.0});
+      tl_loading.to("#video-link", {x: 0, duration: 0.5});
+  
+      tl_loading.to("#list_nav", {x: 0, duration: 0.3});
+      // tl_loading.to("#first_back", {opacity: 0, duration: 1.0});
+      tl_loading.to("#first_back", {display: 'none', duration: 0.0});
+      // tl_loading.to(trans, {opacity: 0, duration: 1.0});
+      // tl_loading.to(trans, {display: 'none', duration: 1.0});
+  
+      tl_loading.play(0);
+      
+      // setTimeout(() => {
+      //   // element.style.display = 'none';
+      //   // element.style.background = "rgb(194, 55, 90)";
+       
+      // }, 3500);
+  
+    });
+  
+    return {
+        result : null,
+    }
+  })();
+  
