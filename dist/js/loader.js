@@ -4,10 +4,11 @@ var loadingAnimation = (function(){
     let timer = null;
   
     document.addEventListener("DOMContentLoaded", function(){
+
+      console.log('landing page');
+
       pages = document.querySelectorAll('[data-page]');
       links = document.querySelectorAll('[data-role="link"]');
-      
-      console.log('landing page');
 
       let sketch = window.sketch;
 
@@ -53,8 +54,6 @@ var loadingAnimation = (function(){
       tl_loading.to(rots, {duration: 0.5, x: -0.5, y: -0.3, z: -0.2,});
   
       tl_loading.to("body", {background: '#7e93ac', duration: 0.0});//rgb(194, 55, 90)
-  
-     
       
       tl_loading.to("#id-left-part", {display: 'block', duration: 0.0});
       tl_loading.to("#id-left-part", {y: 1000, duration: 0.1});

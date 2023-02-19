@@ -66,6 +66,7 @@ var app = (function(){
         // window.location.href="other.html";
         detailButtonAni();
         console.log('video link');
+
         return false;
     }
     const button = document.querySelector('#back2main');
@@ -79,7 +80,7 @@ var app = (function(){
     function detailButtonAni(){
 
         window.rotatePlane(false);
-
+        window.scene_name = "detail";
         // return;
 
         const myImage = document.getElementById("selected_image");
@@ -127,6 +128,7 @@ var app = (function(){
     function backAnimation()
     {
       
+        window.scene_name = "main";
 
         console.log('timeline');
         var tl = gsap.timeline({});

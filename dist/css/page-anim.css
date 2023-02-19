@@ -27,10 +27,6 @@ body {
     transform: translate3d(100%, 0, 0);
     opacity: 0;
     transition: transform 0.5s ease-in, opacity 0.5s ease-in; 
-    /*
-    left: 100%;
-    transition: left 1.0s ease-in; 
-    */
     z-index: 10;
 }
 [data-page="home"]{
@@ -57,13 +53,4 @@ section h1{
 section p{
     padding: 1rem 2rem;
 }
-.image img {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(10deg) translate3d(200px, 0px, 0px);
-    box-shadow: -80px 60px 15px 5px rgba(0,0,0,0.4);
-    transition: all .4s;
-    transform-style: preserve-3d;
-  }
-/* .image:hover img {
-    transform: rotateX(0deg) rotateZ(0deg) translate3d(0px, 0px,0px);
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0);
-} */
+

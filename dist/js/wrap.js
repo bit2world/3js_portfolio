@@ -14,30 +14,28 @@ let attractTo = 0;
 let speed = 0;
 let position = 5.5;//
 let rounded = 0;
+
+window.scene_name == "main";/////////////////////////////////////////
+
+
 document.querySelector("#block");
 document.querySelector("#wrap");
 let elems = [...document.querySelectorAll(".n")];
 
 
-
 window.addEventListener("wheel", (e) => {
-  speed += e.deltaY * 0.0003;
-  // console.log('attract to', attractTo);
-  updateAttractNumber();
+  if(window.scene_name == "main"){
+    speed += e.deltaY * 0.0003;
+    // console.log('attract to', attractTo);
+    updateAttractNumber();
+  }
+  
 });
 function updateAttractNumber()
 {
   console.log('position', position);
 
-  // if(position > 0.0) attractTo = 0;
-  // if(position > 0.5) attractTo = 1;
-  // if(position > 1.5) attractTo = 2;
-  // if(position > 2.5) attractTo = 3;
-  // if(position > 3.5) attractTo = 4;
-  // if(position > 4.5) attractTo = 5;
-  // if(position > 5.5) attractTo = 6;
- 
-  attractTo = Math.round(position);
+  attractTo = Math.round(position);/////////////////////////////////////////////////
   
   let nav_element = document.querySelectorAll('[data-nav="' + attractTo + '"]')[0];
   sessionStorage.setItem('image_path', nav_element.getAttribute('src'));
@@ -95,19 +93,9 @@ function raf() {
 
 function rotatePlane(flag) {
   if (flag) {
-    // gsap.to(sketch.groups[attractTo].rotation, {
-    //     x: -0.5, 
-    //     y: -0.3, 
-    //     z: -0.2,
-    //     duration: 1,
-    //   });
 
-      
       gsap.to(rots, {duration: 0.5, x: -0.5, y: -0.3, z: -0.2,});
       gsap.to(trans, { duration: 0.3, x: 0, y: 0, z: 0, });
-      // gsap.set("#container", {
-      //   zIndex : -1,
-      // });
 
       console.log('come back', attractTo);
 
@@ -118,13 +106,7 @@ function rotatePlane(flag) {
     });
     gsap.to(rots, {duration: 0.3, x: 0, y: 0,  z: 0, });
     gsap.to(trans, {duration: 0.3,x: -0.5, y: 0, z: 0,});
-
-    // gsap.to(sketch.groups[attractTo].rotation, {
-    //   x: 0,
-    //   y: 0,
-    //   z: 0,
-    //   duration: 1,
-    // });
+   
   }
 }
 
@@ -201,9 +183,6 @@ nav.addEventListener("mouseleave", () => {
     width: "10px",
     duration: 0.1,
     onComplete: () => {
-      // navs.forEach((li) => {
-      //   li.style.color = 'transparent';
-      // });
 
       attractMode = false;
       gsap.to(rots, {duration: 0.5, x: -0.5, y: -0.3, z: -0.2,});
@@ -221,45 +200,7 @@ nav.addEventListener("mouseleave", () => {
     duration: 0.1,
   });
 
-  // navs.forEach((el) => {
-  //     var txt = el.textContent.trim();
-  //     var len = txt.length * 1.3;
-  //     // var randomNumber = Math.floor(Math.random() * 6) + 5;
-  //     tl.set(el, {
-  //         transformOrigin: 'center right',
-  //         scaleX: len,//10
-  //     });
-     
-  // });
-
-  // navs.forEach((el) => {
-  
-  //   tl.set(el, {
-  //     transformOrigin: 'center right',
-  //     //  background : '#d1d1d1',
-  //     skewX : 20,
-  //   }).to(el, 0.05, {
-  //       scaleX: 1,
-  //       ease: 'bounce.in',//elastic
-  //       stagger: 0.0,
-  //   }).set(el, { 
-  //     skewX : 0,
-  //   });
-     
-  // });
-
   tl.play(0);
-
-  // setTimeout(function(){
-  //   attractMode = false;
-  //   gsap.to(rots, {duration: 0.5, x: -0.5, y: -0.3, z: -0.2,});
-  //   gsap.to(trans, { duration: 0.3, x: 0, y: 0, z: 0, });
-  
-  //   // element_body.style.background = '#7AB9E0';
-  //   let nav_element = document.querySelectorAll('[data-nav="' + attractTo + '"]')[0];
-  //   element_body.style.background = nav_element.getAttribute('data-clr');
-  //   element_leftpart.style.display = 'block';
-  // }, 400);
  
 });
 navs.forEach((el) => {
