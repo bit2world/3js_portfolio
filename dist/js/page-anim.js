@@ -76,7 +76,13 @@ var app = (function(){
         const myback = document.querySelector('#detail-scene');
 
         myImage.src = sessionStorage.getItem('image_path');
-        myback.style.background = sessionStorage.getItem('back_color');
+       
+        gsap.to(myback, { 
+            duration : 1.0 , 
+            background : sessionStorage.getItem('back_color'),
+            ease: 'expo.inOut',
+        });
+        // myback.style.background = sessionStorage.getItem('back_color');
 
 
         var tl_detail = gsap.timeline({});

@@ -29,20 +29,26 @@ function updateAttractNumber()
 {
   console.log('position', position);
 
-  if(position > 0.0) attractTo = 0;
-  if(position > 0.5) attractTo = 1;
-  if(position > 1.5) attractTo = 2;
-  if(position > 2.5) attractTo = 3;
-  if(position > 3.5) attractTo = 4;
-  if(position > 4.5) attractTo = 5;
-  if(position > 5.5) attractTo = 6;
-
+  // if(position > 0.0) attractTo = 0;
+  // if(position > 0.5) attractTo = 1;
+  // if(position > 1.5) attractTo = 2;
+  // if(position > 2.5) attractTo = 3;
+  // if(position > 3.5) attractTo = 4;
+  // if(position > 4.5) attractTo = 5;
+  // if(position > 5.5) attractTo = 6;
+ 
+  attractTo = Math.round(position);
   
   let nav_element = document.querySelectorAll('[data-nav="' + attractTo + '"]')[0];
   sessionStorage.setItem('image_path', nav_element.getAttribute('src'));
   sessionStorage.setItem('back_color', nav_element.getAttribute('data-clr'));
   if (!attractMode) {
-    element_body.style.background = nav_element.getAttribute('data-clr');
+    // element_body.style.background = nav_element.getAttribute('data-clr');
+    gsap.to(element_body, { 
+      duration : 1.0 , 
+      background : sessionStorage.getItem('back_color'),
+      ease: 'elastic.out',
+  });
   }
 }
 let objs = Array(7).fill({ dist: 0 });

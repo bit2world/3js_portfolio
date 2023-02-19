@@ -41,6 +41,13 @@ export default class Sketch {
     this.groups = [];
     this.handleImages();
 
+    // this.meshes.map(mesh=>{
+    //   console.log(typeof mesh, mesh);
+    //   mesh.addEventListener('click', (ev)=>{
+    //     alert("I am mesh");
+    //   });
+    // });
+
     console.log('Dom Element', this.renderer.domElement);
     
   }
@@ -67,6 +74,7 @@ export default class Sketch {
      
       mesh.addEventListener('click', (event) => {
         console.log('Mesh clicked!');
+        alert("Hi, I am mesh handler");
       });
       
       group.add(mesh);
@@ -78,6 +86,21 @@ export default class Sketch {
       group.rotation.y = -0.5;
       group.rotation.x = -0.2;
       group.rotation.z = -0.1;
+
+      // Add a click event listener to the mesh
+      mesh.userData = { clickable: true };
+      mesh.addEventListener('mouseclick', (e) => {
+        console.log('Mesh clicked!');
+      });
+
+      // Set the CSS cursor property to "pointer" when hovering over the mesh
+      // mesh.on('mouseover', () => {
+      //   renderer.domElement.style.cursor = 'pointer';
+      // });
+      // // Set the CSS cursor property back to "default" when the mouse leaves the mesh
+      // mesh.on('mouseout', () => {
+      //   renderer.domElement.style.cursor = 'default';
+      // });
 
     });
   }
@@ -109,6 +132,10 @@ export default class Sketch {
 
   setupResize() {
     window.addEventListener("resize", this.resize.bind(this));
+    // window.addEventListener("click", (ev)=>{
+    //   alert("Hi, I am mesh handler");
+    // });
+
   }
 
   addObjects() {

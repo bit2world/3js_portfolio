@@ -18,6 +18,7 @@ var loadingAnimation = (function(){
       // var tl_loading = gsap.timeline({});
       let tl_loading = gsap.timeline({repeat: 0, repeatDelay: 0});//repeat: 1, repeatDelay: 0
       
+      tl_loading.set("#first_back", {display: 'none'});
       tl_loading.pause();
   
       gsap.to(rots, {
@@ -37,14 +38,14 @@ var loadingAnimation = (function(){
       tl_loading.to("#list_nav", {x: 100, duration: 0.1});
       
       tl_loading.to("#first_back", {y: 1000, duration: 0.0});
-      tl_loading.to("#first_back", {y: 0, duration: 0.3});
+      // tl_loading.to("#first_back", {y: 0, duration: 0.3});
   
-      let tween = gsap.fromTo("#first_back", {y: 0}, {y: 100, duration: 3, ease: "elastic"});
-      //now we can control it!
-      tween.pause();
-      tween.seek(2);
-      tween.progress(0.5);
-      tween.play();
+      // let tween = gsap.fromTo("#first_back", {y: 0}, {y: 100, duration: 3, ease: "elastic"});
+      // //now we can control it!
+      // tween.pause();
+      // tween.seek(2);
+      // tween.progress(0.5);
+      // tween.play();
   
       tl_loading.to(rots, {duration: 0.0, x: 0.0, y: -0.0,z: -0.0,});
       tl_loading.to(trans, {y: 10, duration: 0.0});  
