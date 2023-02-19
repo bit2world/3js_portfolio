@@ -9,6 +9,9 @@
     /* background-color: #FFF194; */
   }
   .image {
+    
+    display: none;
+
     perspective: 3000px;
     width: 50%;
     position: absolute;

@@ -2,18 +2,18 @@ var loadingAnimation = (function(){
     let pages = [];
     let links = [];
     let timer = null;
-
-    let sketch = window.sketch;
-
-    let rots = sketch.groups.map((e) => e.rotation);
-    console.log('trans', sketch.groups.map((e) => e.position));
-    let trans = sketch.groups.map((e) => e.position);
   
     document.addEventListener("DOMContentLoaded", function(){
       pages = document.querySelectorAll('[data-page]');
       links = document.querySelectorAll('[data-role="link"]');
       
       console.log('landing page');
+
+      let sketch = window.sketch;
+
+      let rots = sketch.groups.map((e) => e.rotation);
+      console.log('trans', sketch.groups.map((e) => e.position));
+      let trans = sketch.groups.map((e) => e.position);
       // landing();
       // var tl_loading = gsap.timeline({});
       let tl_loading = gsap.timeline({repeat: 0, repeatDelay: 0});//repeat: 1, repeatDelay: 0

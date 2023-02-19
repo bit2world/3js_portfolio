@@ -2,6 +2,7 @@
 //iife version of basic animation and navigation (without History API)
 // import { aniBack } from "./animation_back";
 // import gsap from "gsap";
+// import wrap from "./wrap.js";
 
 var app = (function(){
     let pages = [];
@@ -17,16 +18,21 @@ var app = (function(){
         });
 
         video_link = document.getElementById("video-link");
+        mycanvas = document.getElementById("container");
+
         console.log('video link',video_link);
 
         video_link.addEventListener('click', video_handler);
 
-        document.addEventListener('click', windowHanlder);
+        // document.addEventListener('click', windowHanlder);
+        mycanvas.addEventListener('click', windowHanlder);
+
     });
     function windowHanlder(e) {
 
         // let detail_scene =  document.getElementById("detail-scene");
         // detail_scene.style.opacity = '1';
+        console.log("mycanvas");
         detailButtonAni();
         // window.location.href="other.html";
       }
@@ -64,13 +70,17 @@ var app = (function(){
     }
     const button = document.querySelector('#back2main');
 
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function(e) {
         // Your code to handle the click event goes here
         console.log('Button clicked!');
         // aniBack();
         backAnimation();
     });
     function detailButtonAni(){
+
+        window.rotatePlane(false);
+
+        // return;
 
         const myImage = document.getElementById("selected_image");
         const myback = document.querySelector('#detail-scene');
@@ -116,6 +126,8 @@ var app = (function(){
     }
     function backAnimation()
     {
+      
+
         console.log('timeline');
         var tl = gsap.timeline({});
         console.log('gsap', gsap);
@@ -146,10 +158,16 @@ var app = (function(){
             scaleX: 0,
             ease: 'expo.inOut',
             stagger: -0.1,
+            onComplete : ()=>{
+                 gsap.set("#container", {
+                    zIndex : 100,
+                });
+            }
         });
 
         tl.play(0);
 
+        window.rotatePlane(true);
        
     }
     return {

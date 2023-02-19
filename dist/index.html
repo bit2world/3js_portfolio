@@ -40,9 +40,14 @@
 			position: fixed;
 			top: 0;
 			left: 0;
-			z-index: -1;
-			pointer-events: none;
-			padding-left: 300px;
+			z-index: 100;
+			/* -1 */
+			pointer-events: auto;
+			/* none */
+			/* padding-left: 300px; */
+			margin-left: 300px;
+
+			/* margin: 0px auto; */
 		}
 		#wrap {
 			/* z-index: 100; */
@@ -55,9 +60,9 @@
 			top: 250;
 			right: 50;
 			z-index: 210;
-			border: 0px solid #000;
-			width: 20px;
-			height : 320px;
+			/* border: 0px solid #000; */
+			/* width: 20px; */
+			/* height : 320px; */
 			list-style: none;
 			margin: 0;
 			padding: 0;
@@ -70,63 +75,44 @@
 			display: none;
 		} */
 		ul:hover {
-			width: 150px;
+			width: 250px;
 			color: white;
 		}
 		/* ul:hover span {
 			display: inline-block;
 		} */
 		ul:hover li {
-			width: 150px;
+			/* width: 150px; */
 			/* background-color: gray; */
 			color : white;
 		}
 		li {
-			display: block;
+			display: flex;
 			box-sizing: border-box;
-			width : 20px;
-			height: 16px;
+			justify-content: flex-end;
+
 			/* background : paleturquoise; */
-			border-radius: 3px;
 			margin : 20px 0px 20px 0px;
-			font-size: 16px;
-			line-height: 16px;
+			padding : 0px;
+			font-size: 20px;
+			line-height: 30px;
+			align-items: center;
 			text-align: right;
 			overflow: hidden;
-			padding-right: 10px;
-			border-right: 8px solid #d1d1d1;
 			color : transparent;
-			/* border-left: 10px solid yellow; */
-
-			/* float : right; */
+		
 		}
-		/* li::after {
-			width : 10px;
-			height: 20px;
-			background-color: yellowgreen;
-			border-radius: 5px;
-		} */
-		/* li > span {
-			display: none;
-		} */
+		
 		ul:hover li:hover {
-			/* background: gray; */
-			/* width: 200px; */
 			color : rgb(128, 156, 27);
-			/* margin-right : 20px; */
 		}
-		/* li:hover > span {
-			display: block;
-		} */
 		.right_span {
 			display: inline-block;
-			width : 80px;
-			height: 16px;
-			border-radius: 4px;
-			/* color: white; */
-			background: white;
-			padding : 0px 10px;
-
+			width : 10px;
+			height: 30px;
+			border-radius: 5px;
+			background: #d1d1d1;
+			margin : 0px 10px;
 		}
 
 		.container-detail {
@@ -139,6 +125,7 @@
           margin : 0px 0px;
           display: flex;
           justify-content: space-between;
+		  z-index: 350;
         }
         .menu-top-main a {
           text-decoration: none;
@@ -218,6 +205,7 @@
           margin : 30px 30px;
           display: flex;
           justify-content: space-between;
+		  z-index: 330;
         }
         .menu-top a {
           text-decoration: none;
@@ -390,27 +378,37 @@
 
 		<ul id="list_nav" class="nav">
 			<li data-nav="0" data-role="link" src="img/image-0.jpg" data-clr="#f31e56">FUN
-				<!-- <span class="right_span"></span> -->
+				<span class="right_span"></span>
 				<!-- <img  src="img/image-0.jpg" width="0"> -->
+
 			</li>
 			<li data-nav="1" data-role="link" src="img/image-1.jpg" data-clr="#d56ac9">ESPANOTO
 				<!-- <img  src="img/image-1.jpg" width="0"> -->
+				<span class="right_span"></span>
+
 			</li>
 			<li data-nav="2" data-role="link" src="img/image-2.jpg" data-clr="#744e85">BUBBLEHOUSE
 				<!-- <img  src="img/image-2.jpg" width="0"> -->
+				<span class="right_span"></span>
+
 			</li>
 			<li data-nav="3" data-role="link" src="img/image-3.jpg" data-clr="#54d3b6">UENO
 				<!-- <img  src="img/image-3.jpg" width="0"> -->
+				<span class="right_span"></span>
+
 			</li>
 			<li data-nav="4" data-role="link" src="img/image-4.jpg" data-clr="#1b720f">GOOGLE
 				<!-- <img  src="img/image-4.jpg" width="0"> -->
+				<span class="right_span"></span>
+
 			</li>
 			<li data-nav="5" data-role="link" src="img/image-5.jpg" data-clr="#0d1f9c">IV-SKAYA
 				<!-- <img  src="img/image-4.jpg" width="0"> -->
+				<span class="right_span"></span>
 			</li>
 			<li data-nav="6" data-role="link" src="img/image-6.jpg" data-clr="#7e93ac">EAGLE FILM
 				<!-- <img  src="img/image-4.jpg" width="0"> -->
-				<!-- <span class="right_span"></span> -->
+				<span class="right_span"></span>
 			</li>
 		</ul>
 		<div id="wrap">
@@ -444,7 +442,7 @@
 	</div>
 	
 	<!-- <script src="../src/app.js"></script> -->
-	<script src="./js/vendor/three.bundle.js"></script>
+	<script src="./js/three.bundle.js"></script>
 	<script src="./js/vendor/gsap.min.js"></script>
 	<!-- <script src="./js/switch.js"></script>  -->
 	<!-- <script src="./js/animation_back.js"></script> -->
