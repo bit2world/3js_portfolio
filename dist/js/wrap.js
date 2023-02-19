@@ -102,15 +102,6 @@ let nav = document.querySelector(".nav");
 let rots = sketch.groups.map((e) => e.rotation);
 console.log('trans', sketch.groups.map((e) => e.position));
 let trans = sketch.groups.map((e) => e.position);
-// mesh.position.y = i * 1.2;
-// sketch.groups.map((e) => {
-//   // e.rotation
-//   console.log('element', e);
-
-//   e.addEventListener('mousedown', function(){
-//       alert('hi, I am mesh');
-//   });
-// });
 
 console.log(rots);
 
@@ -130,24 +121,6 @@ nav.addEventListener("mouseenter", () => {
   tl.pause();
   
   navs.forEach((el) => {
-    // gsap.to('.skewed-box', {
-    //   duration: 1, // duration in seconds
-    //   skewX: 20, // skew angle for x-axis
-    //   skewY: 10, // skew angle for y-axis
-    //   ease: 'power2.inOut' // easing function
-    // });
-    // tl.set(el, {
-    //     transformOrigin: 'center right',
-    // }).to(el, {
-    //   duration: 0.1, // duration in seconds
-    //   skewX: 20, // skew angle for x-axis
-    //   skewY: 0, // skew angle for y-axis
-    //   ease: 'power2.inOut' // easing function
-    // }).to(el, 0.0, {
-    //     scaleX: 0,
-    //     ease: 'expo.inOut',
-    //     stagger: 0.1,
-    // });
     tl.set(el, {
       scaleX : 0,
     })
@@ -178,24 +151,11 @@ nav.addEventListener("mouseenter", () => {
   tl.play(0);
 });
 nav.addEventListener("mouseleave", () => {
-  
-  // nav.style.width = '200px';
-  // navs.style.width = '200px';
-  // gsap.to(navs, 0.1, { scaleX : 10, ease : 'expo.inOut', stagger : 0.1});
-  // gsap.to(nav, 0.1, { scaleX : 10, ease : 'expo.inOut', stagger : 0.1});
 
   var tl = gsap.timeline({});
   tl.pause();
 
   navs.forEach((el) => {
-    // gsap.to(el, {duration: 0.2, scaleX: 5, opacity: 1.0});//////////////////////////
-    // tl.set(el, {
-    //     transformOrigin: 'center right',
-    // }).to(el, 0.0, {
-    //     scaleX: 5,
-    //     ease: 'expo.inOut',
-    //     stagger: 0.0,
-    // });
       var txt = el.textContent.trim();
       var len = txt.length * 1.3;
       // var randomNumber = Math.floor(Math.random() * 6) + 5;
@@ -207,13 +167,7 @@ nav.addEventListener("mouseleave", () => {
   });
 
   navs.forEach((el) => {
-  //   .set(el, {
-  //     transformOrigin: 'center right',
-  // }).to(el, 0.0, {
-  //     scaleX: 10,
-  //     ease: 'expo.inOut',
-  //     stagger: 0.0,
-  // })
+  
     tl.set(el, {
       transformOrigin: 'center right',
       //  background : '#d1d1d1',
