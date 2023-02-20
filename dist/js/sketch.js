@@ -40,6 +40,8 @@ export default class Sketch {
     this.meshes = [];
     this.groups = [];
     this.handleImages();
+    
+    this.handleMediaSize();
 
     // this.meshes.map(mesh=>{
     //   console.log(typeof mesh, mesh);
@@ -103,8 +105,12 @@ export default class Sketch {
       // });
 
     });
+    // this.handleMediaSize();
   }
   resize() {
+    ///////////////////////////////////////////////
+    // this.handleMediaSize();
+
     this.width = this.container.offsetWidth;
     this.height = this.container.offsetHeight;
     this.renderer.setSize(this.width, this.height);
@@ -160,7 +166,27 @@ export default class Sketch {
       fragmentShader: fragment,
     });
   }
+  handleMediaSize() {
+    var viewportWidth = window.innerWidth;
+    if (viewportWidth <= 768) {
+      console.log("Viewport width is less than or equal to 768 pixels");
+      
+      // let rots = this.groups.map((e) => e.rotation);
+      // let trans = this.groups.map((e) => e.position);
+      
+      this.groups.map((group) => {
 
+        group.rotation.y = 0;
+        group.rotation.x = 0;
+        group.rotation.z = 0;
+
+      });
+
+    } else {
+      console.log("Viewport width is greater than 768 pixels");
+
+    }
+  }
   stop() {
     this.isPlaying = false;
   }
@@ -185,4 +211,6 @@ export default class Sketch {
     this.renderer.render(this.scene, this.camera);
     requestAnimationFrame(this.render.bind(this));
   }
+
 }
+

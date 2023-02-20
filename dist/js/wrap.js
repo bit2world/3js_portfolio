@@ -24,7 +24,7 @@ let elems = [...document.querySelectorAll(".n")];
 
 
 window.addEventListener("wheel", (e) => {
-  if(window.scene_name == "main"){
+  if(window.scene_name != "detail"){
     speed += e.deltaY * 0.0003;
     // console.log('attract to', attractTo);
     updateAttractNumber();
@@ -176,7 +176,7 @@ nav.addEventListener("mouseleave", () => {
     duration: 0.1,
   })
   .to(".nav li span", {
-    width: "150px",
+    width: "200px",
     duration: 0.2,
   })
   .to(".nav li span", {
@@ -213,6 +213,17 @@ navs.forEach((el) => {
   });
 });
 
+// Get the media query that matches the viewport width
+var mediaQuery = window.matchMedia("(max-width: 768px)");
+
+// Execute code whenever the media query matches or unmatches
+mediaQuery.addListener(function(mq) {
+  if (mq.matches) {
+    console.log("Viewport width is less than or equal to 768 pixels");
+  } else {
+    console.log("Viewport width is greater than 768 pixels");
+  }
+});
 
 // raf();
 export { raf };

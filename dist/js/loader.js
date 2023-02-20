@@ -36,7 +36,10 @@ var loadingAnimation = (function(){
       element.style.background = "black";
   
       tl_loading.to("#id-left-part", {display: 'none', duration: 0.0});
-      tl_loading.to("#list_nav", {x: 100, duration: 0.1});
+      tl_loading.set("#list_nav", {
+          display : 'none',
+          x: 100,
+        });
       
       tl_loading.to("#first_back", {y: 1000, duration: 0.0});
       // tl_loading.to("#first_back", {y: 0, duration: 0.3});
@@ -53,6 +56,8 @@ var loadingAnimation = (function(){
       tl_loading.to(trans, {y: 0, duration: 3.0});
       tl_loading.to(rots, {duration: 0.5, x: -0.5, y: -0.3, z: -0.2,});
   
+
+
       tl_loading.to("body", {background: '#7e93ac', duration: 0.0});//rgb(194, 55, 90)
       
       tl_loading.to("#id-left-part", {display: 'block', duration: 0.0});
@@ -66,14 +71,28 @@ var loadingAnimation = (function(){
       tl_loading.to("#video-link", {x: -100, duration: 0.0});
       tl_loading.to("#video-link", {x: 0, duration: 0.5});
   
-      tl_loading.to("#list_nav", {x: 0, duration: 0.3});
+      tl_loading.set("#list_nav", {
+        display : 'block',
+        x: 100,
+      }).to("#list_nav", {
+        x: 0,
+        duration: 0.3
+      });
+      
       // tl_loading.to("#first_back", {opacity: 0, duration: 1.0});
-      tl_loading.to("#first_back", {display: 'none', duration: 0.0});
+      tl_loading.to("#first_back", {
+        display: 'none',
+        duration: 0.0,
+        onComplete : ()=>{
+          handlMediaSize();
+        }
+      });
       // tl_loading.to(trans, {opacity: 0, duration: 1.0});
       // tl_loading.to(trans, {display: 'none', duration: 1.0});
   
       tl_loading.play(0);
       
+      // handlMediaSize();
       // setTimeout(() => {
       //   // element.style.display = 'none';
       //   // element.style.background = "rgb(194, 55, 90)";
@@ -81,6 +100,28 @@ var loadingAnimation = (function(){
       // }, 3500);
   
     });
+    var handlMediaSize = function(){
+
+      var viewportWidth = window.innerWidth;
+      if (viewportWidth <= 768) {
+        console.log("Viewport width is less than or equal to 768 pixels");
+        
+        // let rots = this.groups.map((e) => e.rotation);
+        // let trans = this.groups.map((e) => e.position);
+        
+        sketch.groups.map((group) => {
+  
+          group.rotation.y = 0;
+          group.rotation.x = 0;
+          group.rotation.z = 0;
+  
+        });
+  
+      } else {
+        console.log("Viewport width is greater than 768 pixels");
+  
+      }
+    }
   
     return {
         result : null,
