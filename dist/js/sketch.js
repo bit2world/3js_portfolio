@@ -71,38 +71,29 @@ export default class Sketch {
       // mat.wireframe = true;
      
       console.log("Hello from handleImages!");
-      let geo = new THREE.PlaneBufferGeometry(1.0, 0.8, 20, 20);
+      let geo = new THREE.PlaneBufferGeometry(1.0, 0.8, 20, 20);//0.8
       let mesh = new THREE.Mesh(geo, mat);
      
       mesh.addEventListener('click', (event) => {
         console.log('Mesh clicked!');
         alert("Hi, I am mesh handler");
       });
-      
+
+      // mesh.rotation.z = Math.PI/2;
+      // mesh.position.setY(0);  //or  this
+
       group.add(mesh);
       this.groups.push(group);
       this.scene.add(group);
       this.meshes.push(mesh);
       mesh.position.y = i * 1.2;
+      // mesh.position.x = i * 0.2;
+
+      // group.position.y = 0.0;
 
       group.rotation.y = -0.5;
       group.rotation.x = -0.2;
       group.rotation.z = -0.1;
-
-      // Add a click event listener to the mesh
-      mesh.userData = { clickable: true };
-      mesh.addEventListener('mouseclick', (e) => {
-        console.log('Mesh clicked!');
-      });
-
-      // Set the CSS cursor property to "pointer" when hovering over the mesh
-      // mesh.on('mouseover', () => {
-      //   renderer.domElement.style.cursor = 'pointer';
-      // });
-      // // Set the CSS cursor property back to "default" when the mouse leaves the mesh
-      // mesh.on('mouseout', () => {
-      //   renderer.domElement.style.cursor = 'default';
-      // });
 
     });
     // this.handleMediaSize();
@@ -110,9 +101,9 @@ export default class Sketch {
   resize() {
     ///////////////////////////////////////////////
     // this.handleMediaSize();
-
-    this.width = this.container.offsetWidth;
-    this.height = this.container.offsetHeight;
+    let rate = 0.9;
+    this.width = this.container.offsetWidth * rate;
+    this.height = this.container.offsetHeight* rate;
     this.renderer.setSize(this.width, this.height);
     this.camera.aspect = this.width / this.height;
 
@@ -134,6 +125,8 @@ export default class Sketch {
     this.material.uniforms.resolution.value.w = a2;
 
     this.camera.updateProjectionMatrix();
+
+
   }
 
   setupResize() {
@@ -171,19 +164,26 @@ export default class Sketch {
     if (viewportWidth <= 768) {
       console.log("Viewport width is less than or equal to 768 pixels");
       
-      // let rots = this.groups.map((e) => e.rotation);
-      // let trans = this.groups.map((e) => e.position);
-      
-      this.groups.map((group) => {
+      window.device_mobile = true;
 
-        group.rotation.y = 0;
-        group.rotation.x = 0;
-        group.rotation.z = 0;
-
+      this.groups.map((e) => {
+        e.rotation.z = Math.PI / 2.0;
       });
+      // let trans = this.groups.map((e) => e.position);
+      // gsap.set(rots, {
+      //   z : Math.PI / 2,
+      // })
+      // this.groups.map((group) => {
+
+      //   group.rotation.y = 0;
+      //   group.rotation.x = 0;
+      //   group.rotation.z = Math.PI / 2;
+
+      // });
 
     } else {
       console.log("Viewport width is greater than 768 pixels");
+      window.device_mobile = false;
 
     }
   }

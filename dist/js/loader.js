@@ -40,7 +40,6 @@ var loadingAnimation = (function(){
           display : 'none',
           x: 100,
         });
-      
       tl_loading.to("#first_back", {y: 1000, duration: 0.0});
       // tl_loading.to("#first_back", {y: 0, duration: 0.3});
   
@@ -52,8 +51,8 @@ var loadingAnimation = (function(){
       // tween.play();
   
       tl_loading.to(rots, {duration: 0.0, x: 0.0, y: -0.0,z: -0.0,});
-      tl_loading.to(trans, {y: 10, duration: 0.0});  
-      tl_loading.to(trans, {y: 0, duration: 3.0});
+      tl_loading.set(trans, {y: 10});  
+      tl_loading.to(trans, {y: 0.3, duration: 3.0});
       tl_loading.to(rots, {duration: 0.5, x: -0.5, y: -0.3, z: -0.2,});
   
 
@@ -106,20 +105,34 @@ var loadingAnimation = (function(){
       if (viewportWidth <= 768) {
         console.log("Viewport width is less than or equal to 768 pixels");
         
+        window.device_mobile = true;
+
         // let rots = this.groups.map((e) => e.rotation);
         // let trans = this.groups.map((e) => e.position);
         
-        sketch.groups.map((group) => {
+        sketch.groups.map((group, ix) => {
   
           group.rotation.y = 0;
           group.rotation.x = 0;
-          group.rotation.z = 0;
-  
+          group.rotation.z = Math.PI / 2.0;
+
+          // group.position.x = 0;
+          // group.position.y = 0;
+          group.position.z = -0.2;
+
+          group.children[0].rotation.z  = -Math.PI / 2;
+
+          // group.visible = false;////////////////////////////////////////
+          // gsap.to(group.mesh.position, {duration: 0.3, x: 0.0, y: 0.0, z: -0.3,});
+          // gsap.to("#list_nav", {
+          //   rotateZ : 90,
+          // })
+
         });
   
       } else {
         console.log("Viewport width is greater than 768 pixels");
-  
+        window.device_mobile = false;
       }
     }
   

@@ -67,6 +67,7 @@ function raf() {
     elems[i].style.transform = `scale(${1 + 0.2 * o.dist})`;
 
     let scale = 1 + 0.0001 * o.dist;
+    // sketch.meshes[i].position.x = i * 1.0 - position * 1.0;
     sketch.meshes[i].position.y = i * 1.0 - position * 1.0;
     sketch.meshes[i].scale.set(scale, scale, scale);
     sketch.meshes[i].material.uniforms.distanceFromCenter.value = o.dist;
@@ -85,28 +86,48 @@ function raf() {
 
     //   block.style.transform = `translate(0, ${-position * 100 + 50}px)`;
     wrap.style.transform = `translate(0, ${-position * 100 + 50}px)`;
-    
+    // wrap.style.transform = `translate(${-position * 100 + 50}px, 0)`;
   }
 
   window.requestAnimationFrame(raf);
 }
 
 function rotatePlane(flag) {
-  if (flag) {
+  if(!window.device_mobile)
+  {
+    if (flag) {
 
       gsap.to(rots, {duration: 0.5, x: -0.5, y: -0.3, z: -0.2,});
       gsap.to(trans, { duration: 0.3, x: 0, y: 0, z: 0, });
 
       console.log('come back', attractTo);
 
-  } else {
+    } else {
+      
+      gsap.set("#container", {
+        zIndex : 320,
+      });
+      gsap.to(rots, {duration: 0.3, x: 0, y: 0,  z: 0, });
+      gsap.to(trans, {duration: 0.3,x: -0.5, y: 0, z: 0,});
     
-    gsap.set("#container", {
-      zIndex : 320,
-    });
-    gsap.to(rots, {duration: 0.3, x: 0, y: 0,  z: 0, });
-    gsap.to(trans, {duration: 0.3,x: -0.5, y: 0, z: 0,});
-   
+    }
+  } else {
+    if (flag) {
+
+      // gsap.to(rots, {duration: 0.5, x: -0.5, y: -0.3, z: -0.2,});
+      gsap.to(trans, { duration: 0.3, x: 0, y: 0.3, z: -0.1, }); // 
+
+      console.log('come back', attractTo);
+
+    } else {
+      
+      gsap.set("#container", {
+        zIndex : 320,
+      });
+      // gsap.to(rots, {duration: 0.3, x: 0, y: 0,  z: 0, });
+      gsap.to(trans, {duration: 0.3,x: 0.0, y: 0, z: 0.1,});
+    
+    }
   }
 }
 
@@ -125,7 +146,14 @@ console.log(rots);
 // console.log('nav', nav);
 
 nav.addEventListener("mouseenter", () => {
-  
+  if(window.device_mobile == true)
+  {
+    gsap.set(navs, {
+      color: 'transparent',
+    });
+    return;
+  }
+
   attractMode = true;
 
   gsap.to(rots, {duration: 0.3, x: 0, y: 0,  z: 0, });
@@ -146,11 +174,11 @@ nav.addEventListener("mouseenter", () => {
     })
     .to(".nav li span", {
       width: "200px",
-      duration: 0.2,
+      duration: 0.1,
     })
     .to(".nav li span", {
       width: "10px",
-      duration: 0.2,
+      duration: 0.1,
       onComplete: () => {
         navs.forEach((li) => {
           li.style.color = '#d1d1d1';
@@ -164,6 +192,12 @@ nav.addEventListener("mouseenter", () => {
   tl.play(0);
 });
 nav.addEventListener("mouseleave", () => {
+
+  if(window.device_mobile == true)
+  {
+    return;
+  }
+    
 
   var tl = gsap.timeline({});
   tl.pause();
@@ -213,17 +247,38 @@ navs.forEach((el) => {
   });
 });
 
-// Get the media query that matches the viewport width
-var mediaQuery = window.matchMedia("(max-width: 768px)");
-
-// Execute code whenever the media query matches or unmatches
-mediaQuery.addListener(function(mq) {
-  if (mq.matches) {
+window.addEventListener("resize", function(){
+  var viewportWidth = window.innerWidth;
+  if (viewportWidth <= 768) {
     console.log("Viewport width is less than or equal to 768 pixels");
-  } else {
-    console.log("Viewport width is greater than 768 pixels");
+
+    window.device_mobile = true;
+
+    gsap.set("#list_nav", {
+      rotateZ : -90,
+    });
+    // gsap.to("#list_nav", {
+    //   rotateZ : -90,
+    //   duration : 0.1
+    // });
+    
+    // sketch.groups.map((group) => {
+    //   // console.log('typeof', group);
+    //   group.children[0].position.x = 0;
+    // });
+
+    gsap.to(rots, {duration: 0.1, x: 0, y: 0,  z: Math.PI / 2, });
+    // gsap.to(trans, {duration: 0.1, x: -0.5, y: 0, z: 0,});
+
   }
+  else {
+    gsap.set("#list_nav", {
+      rotateZ : 0,
+    })
+  }
+  
 });
+
 
 // raf();
 export { raf };

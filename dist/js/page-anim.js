@@ -116,13 +116,13 @@ var app = (function(){
 
         tl_detail.play(0);
 
-        const img = document.querySelector('#selected_image');
-        img.classList.remove('auto_hover');
+        // const img = document.querySelector('#selected_image');
+        // img.classList.remove('auto_hover');
 
-        setTimeout(function(){
-            const img = document.querySelector('#selected_image');
-            img.classList.add('auto_hover');
-        }, 500);
+        // setTimeout(function(){
+        //     const img = document.querySelector('#selected_image');
+        //     img.classList.add('auto_hover');
+        // }, 500);
 
     }
     function backAnimation()
